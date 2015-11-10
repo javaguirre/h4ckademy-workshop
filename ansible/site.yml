@@ -1,0 +1,9 @@
+---
+- name: H4ckademy workshop
+  hosts: all
+  remote_user: vagrant
+  sudo: yes
+
+  roles:
+    - debops.nodejs
+    - h4ckademy

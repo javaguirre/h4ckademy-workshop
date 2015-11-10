@@ -1,0 +1,14 @@
+---
+
+- name: H4ckademy | Install dependencies
+  sudo: true
+  apt: name={{ item }} update_cache=yes
+  with_items:
+    - git
+
+- name: H4ckademy | Install npm dependencies
+  npm: name={{ item }} global=yes
+  with_items:
+    - coffee-script
+    - bower
+    - gulp
