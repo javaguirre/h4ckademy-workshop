@@ -1,0 +1,19 @@
+{
+  "name": "h4ckademy",
+  "homepage": "https://github.com/javaguirre/h4ckademy-workshop",
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~0.14.2",
+    "bootstrap": "~3.3.5"
+  }
+}
