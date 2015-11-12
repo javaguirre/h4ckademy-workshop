@@ -5,9 +5,9 @@
   "main": "",
   "dependencies": {
     "gulp-coffee": "^2.3.1",
+    "gulp-debug": "^2.1.2",
     "gulp-inject": "^3.0.0",
-    "gulp-util": "^3.0.7",
-    "gulp-watch": "^4.3.5"
+    "gulp-livereload": "^3.8.1"
   },
   "devDependencies": {},
   "scripts": {
