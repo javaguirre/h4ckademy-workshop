@@ -4,6 +4,10 @@
   remote_user: vagrant
   sudo: yes
 
+  vars:
+    - h4ckademy_path: "/home/vagrant/hack"
+
   roles:
     - debops.nodejs
+    - virtualenv
     - h4ckademy
