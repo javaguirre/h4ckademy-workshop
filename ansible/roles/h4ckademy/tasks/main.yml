@@ -5,10 +5,12 @@
   apt: name={{ item }} update_cache=yes
   with_items:
     - git
+    - python-dev
 
-- name: H4ckademy | Install npm dependencies
-  npm: name={{ item }} global=yes
-  with_items:
-    - coffee-script
-    - bower
-    - gulp
+- name: H4ckademy | Install via PIP and virtualenv
+  sudo: false
+  pip: |
+    chdir={{ h4ckademy_path }}
+    virtualenv={{ h4ckademy_path }}/.venv
+    virtualenv_command=/usr/local/bin/virtualenv
+    requirements=requirements.txt
