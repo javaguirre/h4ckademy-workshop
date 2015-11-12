@@ -1,20 +1,23 @@
 var gulp = require('gulp');
-var gutil = require('gulp-util');
 var coffee = require('gulp-coffee');
-var watch = require('gulp-watch');
 var inject = require('gulp-inject');
+var debug = require('gulp-debug');
+var livereload = require('gulp-livereload');
 
 var COFFEE_STATIC_PATH = './static/coffee/*.coffee';
-var PUBLIC_STATIC_PATH = './public/';
+var PUBLIC_STATIC_PATH = './public/js/';
 
-gulp.task('coffee', function() {
-  gulp.src(COFFEE_STATIC_PATH)
-    .pipe(coffee({bare: true}).on('error', gutil.log))
-    .pipe(gulp.dest(PUBLIC_STATIC_PATH));
+gulp.task('scripts', function() {
+  return gulp.src(COFFEE_STATIC_PATH)
+    .pipe(debug({title: 'coffee:'}))
+    .pipe(coffee())
+    .pipe(gulp.dest(PUBLIC_STATIC_PATH))
+    .pipe(livereload());
 });
 
 gulp.task('watch', function() {
-    gulp.watch(COFFEE_STATIC_PATH, ['coffee']);
+  livereload.listen(35729);
+  gulp.watch(COFFEE_STATIC_PATH, ['scripts']);
 });
 
-gulp.task('default', []);
+gulp.task('default', ['scripts', 'watch']);
