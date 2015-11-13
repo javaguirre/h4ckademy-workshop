@@ -2,5 +2,7 @@
 
 - src: debops.nodejs
 
-- name: virtualenv
-  src: https://github.com/brad/ansible-virtualenv
+- name: golang
+  src: https://github.com/jlund/ansible-go
+
+- src: Stouts.redis
