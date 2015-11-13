@@ -15,3 +15,5 @@
     - github.com/gin-gonic/gin
     - github.com/gorilla/websocket
     - github.com/codegangsta/gin
+    - github.com/asaskevich/EventBus
+    - gopkg.in/redis.v3

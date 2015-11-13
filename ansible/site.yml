@@ -9,5 +9,6 @@
 
   roles:
     - debops.nodejs
+    - Stouts.redis
     - golang
     - h4ckademy
