@@ -5,12 +5,13 @@
   apt: name={{ item }} update_cache=yes
   with_items:
     - git
-    - python-dev
 
-- name: H4ckademy | Install via PIP and virtualenv
+- name: H4ckademy | Install golang dependencies
   sudo: false
-  pip: |
-    chdir={{ h4ckademy_path }}
-    virtualenv={{ h4ckademy_path }}/.venv
-    virtualenv_command=/usr/local/bin/virtualenv
-    requirements=requirements.txt
+  environment:
+    GOPATH: "/home/vagrant/go"
+  command: /usr/local/go/bin/go get "{{ item }}"
+  with_items:
+    - github.com/gin-gonic/gin
+    - github.com/gorilla/websocket
+    - github.com/codegangsta/gin

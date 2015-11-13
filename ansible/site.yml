@@ -9,5 +9,5 @@
 
   roles:
     - debops.nodejs
-    - virtualenv
+    - golang
     - h4ckademy

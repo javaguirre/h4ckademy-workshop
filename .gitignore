@@ -3,3 +3,4 @@ node_modules/
 ansible/vendor/
 bower_components/
 public/
+app/gin-bin
