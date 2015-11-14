@@ -1,1 +1,5 @@
 ---
+
+gopath: "/home/vagrant/go"
+gobin: "/usr/local/go/bin/go"
+project_path: "/home/vagrant/hack"

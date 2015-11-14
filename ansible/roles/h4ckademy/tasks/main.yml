@@ -6,14 +6,23 @@
   with_items:
     - git
 
+- name: H4ckademy | symlink to project
+  sudo: false
+  file:
+    src: "{{ gopath }}/src/github.com/javaguirre/h4ckademy-workshop"
+    dest: "{{ project_path }}"
+    state: link
+
 - name: H4ckademy | Install golang dependencies
   sudo: false
   environment:
-    GOPATH: "/home/vagrant/go"
-  command: /usr/local/go/bin/go get "{{ item }}"
+    GOPATH: "{{ gopath }}"
+  command: "{{ gobin }} get {{ item }}"
   with_items:
     - github.com/gin-gonic/gin
     - github.com/gorilla/websocket
     - github.com/codegangsta/gin
     - github.com/asaskevich/EventBus
     - gopkg.in/redis.v3
+  tags:
+    - godeps
