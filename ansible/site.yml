@@ -2,13 +2,10 @@
 - name: H4ckademy workshop
   hosts: all
   remote_user: vagrant
-  sudo: yes
-
-  vars:
-    - h4ckademy_path: "/home/vagrant/hack"
+  sudo: no
 
   roles:
-    - debops.nodejs
-    - Stouts.redis
-    - golang
+    - { role: debops.nodejs, sudo: yes }
+    - { role: Stouts.redis, sudo: yes }
+    - { role: golang, sudo: yes }
     - h4ckademy
