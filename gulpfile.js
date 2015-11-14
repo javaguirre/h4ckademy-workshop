@@ -1,9 +1,9 @@
 var gulp = require('gulp');
-var coffee = require('gulp-coffee');
 var inject = require('gulp-inject');
 var debug = require('gulp-debug');
 var concat = require('gulp-concat');
 var livereload = require('gulp-livereload');
+var coffeeify = require('gulp-coffeeify');
 
 var COFFEE_STATIC_PATH = './static/coffee/*.coffee';
 var STYLES_STATIC_PATH = [
@@ -16,7 +16,8 @@ var PUBLIC_CSS_STATIC_PATH = './public/css/';
 gulp.task('scripts', function() {
   return gulp.src(COFFEE_STATIC_PATH)
     .pipe(debug({title: 'coffee:'}))
-    .pipe(coffee())
+    .pipe(coffeeify())
+    .pipe(concat('all.js'))
     .pipe(gulp.dest(PUBLIC_JS_STATIC_PATH))
     .pipe(livereload());
 });
