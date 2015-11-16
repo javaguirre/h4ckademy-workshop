@@ -1,19 +1,35 @@
 module.exports =
   class ChatConnection
-    constructor: (url) ->
-      @client = new WebSocket(url)
+    CLOSED_STATES = [WebSocket.CLOSED, WebSocket.CLOSING]
+    REOPEN_TIMEOUT = 5000
 
-    send: (data) ->
+    constructor: (url) ->
+      @url = url
+      @initWebsocket()
+
+    initWebsocket: ->
+      @client = new WebSocket(@url)
+      @client.onopen = @onopen
+      @client.onclose = @onclose
+      @client.onmessage = @onmessage
+
+    send: (data) =>
       @client.send data
 
-    onmessage: (data) ->
+    onmessage: (data) =>
       # TODO Emit message received
       console.log data
 
       return data
 
-    onopen: ->
+    onopen: =>
       console.log "open"
 
-    onclose: ->
-      console.log "close"
+    onclose: =>
+      setTimeout @initWebsocket(), @REOPEN_TIMEOUT
+
+    isClosed: ->
+      @CLOSED_STATES.indexOf(@client.readyState) != -1
+
+    isOpen: ->
+      @client.readyState == WebSocket.OPEN
