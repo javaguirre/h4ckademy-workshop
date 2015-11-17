@@ -7,5 +7,5 @@
   roles:
     - { role: debops.nodejs, sudo: yes }
     - { role: Stouts.redis, sudo: yes }
-    - { role: golang, sudo: yes }
+    - { role: golang, sudo: yes, tags: ['goinstall'] }
     - h4ckademy
