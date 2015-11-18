@@ -260,3 +260,8 @@ TODO Backend parts
 TODO Split React components
 TODO Parts interaction
 TODO Flux
+
+---
+
+# TODO Deploy DigitalOcean server websocket with Ansible
+# TODO Redis
