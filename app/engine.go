@@ -17,7 +17,7 @@ func initEngine(bus *EventBus.EventBus) (engine *gin.Engine) {
 	})
 
 	engine.GET("/ws", func(context *gin.Context) {
-		wshandler(context.Writer, context.Request, bus)
+		websocketHandler(context.Writer, context.Request, bus)
 	})
 
 	return

@@ -9,15 +9,15 @@ import (
 	"github.com/javaguirre/h4ckademy-workshop/app/lib"
 )
 
-var wsupgrader = websocket.Upgrader{
+var websocketUpgrader = websocket.Upgrader{
 	ReadBufferSize:  1024,
 	WriteBufferSize: 1024,
 }
 
-func wshandler(w http.ResponseWriter, r *http.Request, bus *EventBus.EventBus) {
+func websocketHandler(w http.ResponseWriter, r *http.Request, bus *EventBus.EventBus) {
 	log.Println(lib.NEW_MESSAGE_EVENT)
 
-	conn, err := wsupgrader.Upgrade(w, r, nil)
+	conn, err := websocketUpgrader.Upgrade(w, r, nil)
 	if err != nil {
 		log.Fatal("Failed to get websocket upgrade")
 		return
@@ -28,6 +28,7 @@ func wshandler(w http.ResponseWriter, r *http.Request, bus *EventBus.EventBus) {
 		bus.Publish(lib.NEW_MESSAGE_EVENT, string(msg[:]))
 
 		if err != nil {
+			log.Fatal(err)
 			break
 		}
 
