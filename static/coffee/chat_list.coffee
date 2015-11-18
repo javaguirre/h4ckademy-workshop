@@ -6,8 +6,8 @@ ChatList = React.createClass
   getChatItem: (message) ->
     React.createElement(
       ChatItem,
-      message: message,
-      author: 'author',
+      message: message.text,
+      author: message.author,
       key: Math.random()
     )
 

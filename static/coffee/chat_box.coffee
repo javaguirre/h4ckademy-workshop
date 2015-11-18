@@ -8,20 +8,23 @@ ChatBox = React.createClass
   displayName: 'ChatBox'
 
   getInitialState: ->
-    {
-      messages: [],
-      connection: null
-    }
+    messages: [],
+    author: 'anonymous',
+    connection: null
 
   componentDidMount: ->
     URL = 'ws://localhost:3000/ws';
-    @setState({connection: new ChatConnection(URL)})
+    @setState(connection: new ChatConnection(URL))
 
   onHandleSendMessage: (message) ->
-    updated_messages = @state.messages
-    updated_messages.push message
-    @setState(messages: updated_messages)
-    @state.connection.send(message)
+    new_message = @getMessage(message)
+    @state.messages.push new_message
+    @setState(messages: @state.messages)
+    @state.connection.send(new_message)
+
+  getMessage: (message) ->
+      author: @state.author
+      text: message
 
   render: ->
     div null,
