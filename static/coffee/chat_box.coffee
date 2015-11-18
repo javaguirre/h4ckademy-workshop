@@ -1,3 +1,4 @@
+ChatInputAuthor = require('./chat_input_author')
 ChatInput = require('./chat_input')
 ChatList = require('./chat_list')
 ChatConnection = require('./chat_connection')
@@ -22,6 +23,9 @@ ChatBox = React.createClass
     @setState(messages: @state.messages)
     @state.connection.send(new_message)
 
+  onHandleSetAuthor: (author) ->
+    @setState(author: author)
+
   getMessage: (message) ->
       author: @state.author
       text: message
@@ -29,6 +33,7 @@ ChatBox = React.createClass
   render: ->
     div null,
       React.DOM.h4(key: 'header', 'chat')
+      React.createElement(ChatInputAuthor, onSetAuthor: @onHandleSetAuthor)
       React.createElement(ChatList, messages: @state.messages)
       React.createElement(ChatInput, onSendMessage: @onHandleSendMessage)
 
