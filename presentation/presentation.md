@@ -16,9 +16,42 @@ class: inverse
 
 class: inverse
 
-# Un poco de teoría
+# Event-driven architecture (EDA)
 
-## TODO Hablar de eventos
+Tiempo real, consumir lo + rápido al producir el evento
+Notificaciones push
+Flujo de datos una dirección, fire and forget
+Acción inmediata por parte de los consumidores
+Informacional, no comandos/operaciones muy complejas
+Opción desarrollo sistema desacoplado
+Fácil de escalar si bien desarollado
+Podemos controlar más fácilmente el flujo de datos en nuestra aplicación
+Monitorizando eventos salud de aplicación
+flujo de datos unidireccional
+Distribuido
+Puede agregar complejidad y complicaciones si no hay buena organización
+
+---
+
+class: inverse
+
+![EDA](./images/eda.jpg)
+
+---
+
+# Service oriented architecture (SOA)
+
+encapsular funcionalidad
+Independientes de lógica de otras partes
+Servicios que se suscriben a eventos
+Aislamiento de servicios, fácil de eliminar/refactorizar teniendo estructuras de datos definidas en los eventos
+
+---
+
+class: inverse
+
+![EDA](./images/eda-soa.jpg)
+
 
 ---
 
