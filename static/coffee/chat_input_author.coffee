@@ -46,10 +46,10 @@ ChatInputAuthor = React.createClass
       className: 'row',
       if @state.author then authorLabel else authorInput
 
-  changeColor: ->
-    backgroundColor = @state.colors[@refs.color.value]
+  changeColor: (e) ->
+    backgroundColor = @state.colors[e.target.value]
     $(@refs.color).css('background-color', backgroundColor)
-    #@setState(authorColor: @refs.color.value)
+    @setState(authorColor: e.target.value)
 
   setAuthor: ->
     author = @refs.author.value
