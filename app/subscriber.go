@@ -8,13 +8,13 @@ import (
 )
 
 func persistMessage(message string) {
-	service := service.PersistService.New()
-	service.save(message)
+	service := lib.NewPersistService()
+	service.Save(message)
 }
 
 func countMessage(message string) {
-	service := service.AnalyticsService.New()
-	service.update(message)
+	service := lib.NewAnalyticsService()
+	service.Update(message)
 }
 
 func logMessage(message string) {
@@ -32,7 +32,7 @@ func initBus() (bus *EventBus.EventBus) {
 	bus.Subscribe(lib.NEW_MESSAGE_EVENT, persistMessage)
 	bus.Subscribe(lib.NEW_MESSAGE_EVENT, countMessage)
 	bus.Subscribe(lib.NEW_MESSAGE_EVENT, logMessage)
-	bus.Subscribe(lib.NEW_DEVICE_ID, logNewDevice)
+	bus.Subscribe(lib.NEW_DEVICE_EVENT, logNewDevice)
 
 	return
 }

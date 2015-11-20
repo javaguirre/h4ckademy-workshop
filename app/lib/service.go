@@ -9,26 +9,26 @@ type Analytics interface {
 }
 
 type PersistService struct {
-	string databaseName
+	databaseName string
 }
 
 type AnalyticsService struct {
-	string apiKey
-	string widgetKey
+	apiKey    string
+	widgetKey string
 }
 
-func (service *PersistService) New() int {
-	return PersistService{}
+func NewPersistService() *PersistService {
+	return &PersistService{}
 }
 
-func (service *PersistService) Save() int {
-	service.save()
+func (service *PersistService) Save(message string) {
+	// TODO
 }
 
-func (service *AnalyticsService) New() int {
-	return AnalyticsService{}
+func NewAnalyticsService() *AnalyticsService {
+	return &AnalyticsService{}
 }
 
-func (service *AnalyticsService) Update() int {
+func (service *AnalyticsService) Update(message string) {
 	// TODO: Send to our analytics service
 }
