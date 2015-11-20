@@ -18,12 +18,12 @@ class: inverse
 
 # Event-driven architecture (EDA)
 
-Tiempo real, consumir lo + rápido al producir el evento
-Flujo de datos unidireccional (más fácil de controlar)
-Desarrollo sistema desacoplado
-Fácil de escalar
-Distribuido
-Puede agregar complejidad si no hay buena organización
+- Tiempo real, consumir lo + rápido al producir el evento
+- Flujo de datos unidireccional (más fácil de controlar)
+- Desarrollo sistema desacoplado
+- Fácil de escalar
+- Distribuido
+- Puede agregar complejidad si no hay buena organización
 
 ---
 
@@ -35,11 +35,11 @@ class: inverse
 
 # Service oriented architecture (SOA)
 
-Encapsular funcionalidad
-Independientes de lógica de otras partes de la aplicación
-Servicios que se suscriben a eventos
-Aislamiento de servicios, fácil de eliminar/refactorizar si bien definido
-Fácil de testear
+- Encapsular funcionalidad
+- Independientes de lógica de otras partes de la aplicación
+- Servicios que se suscriben a eventos
+- Aislamiento de servicios, fácil de eliminar/refactorizar si bien definido
+- Fácil de testear
 
 ---
 
@@ -277,11 +277,21 @@ gulp.task('default', ['scripts', 'styles', 'watch']);
 
 ---
 
-class: inverse
+class: center, inverse
 
 # Let's do this!
 
 ![Do It!](./images/x-wing-2.0.gif)
+
+---
+
+class: inverse
+
+- Definir mejor las estructuras de datos para Persistencia, Analytics
+- Definir configuración de la aplicación
+- Validación de campos en React
+- El bloque de enviar mensaje debería salir únicamente una vez introducido el nombre
+- Dejar funcionando Cyfe, enviar mensaje por autor
 
 ---
 
