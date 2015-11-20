@@ -3,7 +3,9 @@ ChatInput = require('./chat_input')
 ChatList = require('./chat_list')
 ChatConnection = require('./chat_connection')
 
-{div} = React.DOM
+{div, form} = React.DOM
+
+URL = 'ws://localhost:3000/ws'
 
 ChatBox = React.createClass
   displayName: 'ChatBox'
@@ -14,7 +16,6 @@ ChatBox = React.createClass
     connection: null
 
   componentDidMount: ->
-    URL = 'ws://localhost:3000/ws';
     @setState(connection: new ChatConnection(URL))
 
   onHandleSendMessage: (message) ->
@@ -33,8 +34,11 @@ ChatBox = React.createClass
   render: ->
     div null,
       React.DOM.h4(key: 'header', 'chat')
-      React.createElement(ChatInputAuthor, onSetAuthor: @onHandleSetAuthor)
-      React.createElement(ChatList, messages: @state.messages)
-      React.createElement(ChatInput, onSendMessage: @onHandleSendMessage)
+      form(
+        className: "form-horizontal",
+        React.createElement(ChatInputAuthor, onSetAuthor: @onHandleSetAuthor)
+        React.createElement(ChatList, messages: @state.messages)
+        React.createElement(ChatInput, onSendMessage: @onHandleSendMessage)
+      )
 
 module.exports = ChatBox

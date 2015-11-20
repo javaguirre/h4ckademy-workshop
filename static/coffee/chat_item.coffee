@@ -2,9 +2,13 @@
 
 ChatItem = React.createClass
   render: ->
-    div
+    div(
       className: 'row',
-      span(null, @props.author.concat(': '))
-      span(null, @props.message)
+      div(
+        className: 'col-md-offset-2 col-md-8'
+        span(null, @props.author.concat(': '))
+        span(null, @props.message)
+      )
+    )
 
 module.exports = ChatItem
