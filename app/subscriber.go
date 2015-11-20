@@ -8,12 +8,12 @@ import (
 )
 
 func persistMessage(message string) {
-	service := lib.NewPersistService()
+	var service lib.Persistence = lib.NewPersistService(0)
 	service.Save(message)
 }
 
 func countMessage(message string) {
-	service := lib.NewAnalyticsService()
+	var service lib.Analytics = lib.NewAnalyticsService("")
 	service.Update(message)
 }
 
