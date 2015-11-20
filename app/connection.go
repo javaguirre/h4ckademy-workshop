@@ -30,7 +30,7 @@ func websocketHandler(writer http.ResponseWriter, request *http.Request, bus *Ev
 		device_header := request.Header[DEVICE_ID_HEADER]
 
 		if len(device_header) > 0 && device_header[0] != "" {
-			bus.Publish(lib.NEW_DEVICE_EVENT, string(message[:]))
+			bus.Publish(lib.NEW_DEVICE_EVENT, device_header[0])
 		}
 
 		if err != nil {
