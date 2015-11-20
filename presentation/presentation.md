@@ -33,6 +33,8 @@ class: inverse
 
 ---
 
+class: inverse
+
 # Service oriented architecture (SOA)
 
 - Encapsular funcionalidad
@@ -287,6 +289,8 @@ class: center, inverse
 
 class: inverse
 
+# TODO
+
 - Definir mejor las estructuras de datos para Persistencia, Analytics
 - Definir configuración de la aplicación
 - Validación de campos en React
@@ -295,7 +299,7 @@ class: inverse
 
 ---
 
-class: inverse
+class: inverse, center, middle
 
 # Gracias
 
