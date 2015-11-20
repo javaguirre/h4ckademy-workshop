@@ -9,29 +9,35 @@ import (
 	"github.com/javaguirre/h4ckademy-workshop/app/lib"
 )
 
+const DEVICE_ID_HEADER string = "X-DEVICE-ID"
+
 var websocketUpgrader = websocket.Upgrader{
 	ReadBufferSize:  1024,
 	WriteBufferSize: 1024,
 }
 
-func websocketHandler(w http.ResponseWriter, r *http.Request, bus *EventBus.EventBus) {
-	log.Println(lib.NEW_MESSAGE_EVENT)
-
-	conn, err := websocketUpgrader.Upgrade(w, r, nil)
+func websocketHandler(writer http.ResponseWriter, request *http.Request, bus *EventBus.EventBus) {
+	connection, err := websocketUpgrader.Upgrade(writer, request, nil)
 	if err != nil {
 		log.Fatal("Failed to get websocket upgrade")
 		return
 	}
 
 	for {
-		t, msg, err := conn.ReadMessage()
-		bus.Publish(lib.NEW_MESSAGE_EVENT, string(msg[:]))
+		typeMessage, message, err := connection.ReadMessage()
+		bus.Publish(lib.NEW_MESSAGE_EVENT, string(message[:]))
+
+		device_header := request.Header[DEVICE_ID_HEADER]
+
+		if len(device_header) > 0 && device_header[0] != "" {
+			bus.Publish(lib.NEW_DEVICE_EVENT, string(message[:]))
+		}
 
 		if err != nil {
 			log.Fatal(err)
 			break
 		}
 
-		conn.WriteMessage(t, msg)
+		connection.WriteMessage(typeMessage, message)
 	}
 }
