@@ -19,17 +19,11 @@ class: inverse
 # Event-driven architecture (EDA)
 
 Tiempo real, consumir lo + rápido al producir el evento
-Notificaciones push
-Flujo de datos una dirección, fire and forget
-Acción inmediata por parte de los consumidores
-Informacional, no comandos/operaciones muy complejas
-Opción desarrollo sistema desacoplado
-Fácil de escalar si bien desarollado
-Podemos controlar más fácilmente el flujo de datos en nuestra aplicación
-Monitorizando eventos salud de aplicación
-flujo de datos unidireccional
+Flujo de datos unidireccional (más fácil de controlar)
+Desarrollo sistema desacoplado
+Fácil de escalar
 Distribuido
-Puede agregar complejidad y complicaciones si no hay buena organización
+Puede agregar complejidad si no hay buena organización
 
 ---
 
@@ -41,10 +35,11 @@ class: inverse
 
 # Service oriented architecture (SOA)
 
-encapsular funcionalidad
-Independientes de lógica de otras partes
+Encapsular funcionalidad
+Independientes de lógica de otras partes de la aplicación
 Servicios que se suscriben a eventos
-Aislamiento de servicios, fácil de eliminar/refactorizar teniendo estructuras de datos definidas en los eventos
+Aislamiento de servicios, fácil de eliminar/refactorizar si bien definido
+Fácil de testear
 
 ---
 
@@ -282,19 +277,17 @@ gulp.task('default', ['scripts', 'styles', 'watch']);
 
 ---
 
-# Backend
+class: inverse
 
-TODO Backend parts
+# Let's do this!
 
----
-
-# Frontend
-
-TODO Split React components
-TODO Parts interaction
-TODO Flux
+![Do It!](./images/x-wing-2.0.gif)
 
 ---
 
-# TODO Deploy DigitalOcean server websocket with Ansible
-# TODO Redis
+class: inverse
+
+# Gracias
+
+#### Javier Aguirre [@javaguirre](https://javaguirre.net)
+#### [Github](https://github.com/javaguirre) | [Twitter](https://twitter.com/javaguirre) | [Blog](https://javaguirre.net)
