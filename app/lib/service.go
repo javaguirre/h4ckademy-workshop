@@ -1,34 +1,54 @@
 package lib
 
+import (
+	"bytes"
+	"encoding/json"
+	"net/http"
+
+	"gopkg.in/redis.v3"
+)
+
+// DB key where messages will be persisted
+const chatHistoryKey string = "chat_history"
+
 type Persistence interface {
-	Save()
+	Save(message string)
 }
 
 type Analytics interface {
-	Update()
+	Update(message string)
 }
 
 type PersistService struct {
-	databaseName string
+	databaseName int64
 }
 
 type AnalyticsService struct {
-	apiKey    string
-	widgetKey string
+	widgetEndpoint string
 }
 
-func NewPersistService() *PersistService {
-	return &PersistService{}
+func NewPersistService(databaseName int64) *PersistService {
+	return &PersistService{databaseName}
 }
 
 func (service *PersistService) Save(message string) {
-	// TODO
+	client := redis.NewClient(&redis.Options{
+		Addr:     "localhost:6379",
+		Password: "",
+		DB:       service.databaseName,
+	})
+	client.LPush(chatHistoryKey, message)
 }
 
-func NewAnalyticsService() *AnalyticsService {
-	return &AnalyticsService{}
+func NewAnalyticsService(widgetEndpoint string) *AnalyticsService {
+	return &AnalyticsService{widgetEndpoint}
 }
 
 func (service *AnalyticsService) Update(message string) {
-	// TODO: Send to our analytics service
+	var newMessage map[string]string
+	json.Unmarshal([]byte(message), &newMessage)
+	// TODO
+	data := []byte("")
+
+	http.NewRequest("POST", service.widgetEndpoint, bytes.NewBuffer(data))
 }
