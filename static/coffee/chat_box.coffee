@@ -21,7 +21,7 @@ ChatBox = React.createClass
     new_message = @getMessage(message)
     @state.messages.push new_message
     @setState(messages: @state.messages)
-    @state.connection.send(new_message)
+    @state.connection.send(JSON.stringify(new_message))
 
   onHandleSetAuthor: (author) ->
     @setState(author: author)
