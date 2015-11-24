@@ -32,19 +32,19 @@ ChatInputAuthor = React.createClass
     authorLabel = div(
       className: 'form-group',
       label(className: 'control-label col-sm-2', 'Author')
-      span(null, 'author: '.concat(@state.author))
+      span(className: 'col-sm-8', @state.author)
     )
 
     authorInput = div(
       null,
-      div(
-        className: 'form-group',
-        label(className: 'control-label col-sm-2', 'Color')
-        div(
-          className: 'col-sm-10',
-          select(className: 'form-control', ref: 'color', onChange: @changeColor, options)
-        )
-      )
+    #  div(
+    #    className: 'form-group',
+    #    label(className: 'control-label col-sm-2', 'Color')
+    #    div(
+    #      className: 'col-sm-10',
+    #      select(className: 'form-control', ref: 'color', onChange: @changeColor, options)
+    #    )
+    #  )
       div(
         className: 'form-group',
         label(className: 'control-label col-sm-2', 'Author')
