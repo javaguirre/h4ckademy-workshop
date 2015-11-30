@@ -73,8 +73,6 @@ class: inverse
 
 ```bash
 git clone https://github.com/javaguirre/h4ckademy-workshop.git
-git fetch origin
-git checkout -b boilerplate origin/boilerplate
 ```
 
 ---
